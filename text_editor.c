@@ -6,11 +6,6 @@
 #include "stack.h"
 
 
-
-
-
-
-
 void onStart(stack* L , stack* R , char* str);
 char* createOutput(stack* L, stack* R);
 void shiftCursorLeft(stack* L, stack* R);
@@ -18,13 +13,6 @@ void type(stack* L, stack* R , char ch);
 void shiftCursorRight(stack* L, stack* R);
 void delet(stack* L, stack* R);
 void backspace(stack* L, stack* R);
-
-
-
-
-
-
-
 
 
 
@@ -38,8 +26,8 @@ int main(){
     // printStack(sleft);
     // printStack(sright);
 
-
-    printf("\n%s", createOutput(sleft,sright));
+    system("cls");
+    printf("\n\n\n%s", createOutput(sleft,sright));
 
     // shiftCursorLeft(sleft , sright);
     // shiftCursorLeft(sleft , sright);
@@ -48,15 +36,18 @@ int main(){
 
     char input;
     while(1){
-        input=getch();        
+        input=getch();    
+
         system("cls");
+
+        printf("\n\n");
         // printf("Right arrow, left arrow, typing working");
 
         //arrow key generate firstly -32 and then ABCD??
         if(input == -32)
         {
            input=getch();        //special key generate 2 interrupts next interrupt is char M so we need to skip that otherwise it will go in next input stream
-           printf("\n%d\n",input);
+        //    printf("\n%d\n",input);
             // shiftCursorLeft(sleft , sright);
 
 
