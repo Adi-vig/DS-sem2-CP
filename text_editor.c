@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+#include <conio.h>
 
 #include "stack.h"
 
@@ -41,9 +42,15 @@ int main(){
     shiftCursorLeft(sleft , sright);
     printf("\n %s", createOutput(sleft,sright));
 
+    char input;
+    input=getch();
+    if(input == -32)
+    {
+        shiftCursorLeft(sleft , sright);
+    printf("\n %s", createOutput(sleft,sright));
+    }
+
     
-
-
     return 0;
 }
 
