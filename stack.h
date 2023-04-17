@@ -39,7 +39,7 @@ void printStack( stack* s){
     printf("\n\tbottom --> top\n");
     printf("\t[ ");
     while(temp<=s->tos){
-        printf("%d ", s->arr[temp]);
+        printf("%c ", s->arr[temp]);
         temp++;
     }
     // printf("]");
