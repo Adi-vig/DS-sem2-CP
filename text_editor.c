@@ -10,13 +10,11 @@ void onStart(stack* L , stack* R , char* str);
 char* displayOutput(stack* L, stack* R);
 void shiftCursorLeft(stack* L, stack* R);
 void type(stack* L, stack* R , char ch);
-
-
-
-
-
-
-
+void shiftCursorRight(stack* L, stack* R);
+void delet(stack* L, stack* R);
+void backspace(stack* L, stack* R);
+char* finalOutput(stack* L, stack* R);
+void display(char* s);
 
 
 
@@ -24,37 +22,51 @@ int main(){
     stack* sleft = newStack(100); 
     stack* sright= newStack(100);
 
-    char str[] = "Hello my name is Aditya";
+    // char str[] = "Hello my name is Aditya";
+    char str[500];
+
+    FILE* fp;
+    fp = fopen( "myfile.txt", "r" );
+    fgets(str, 500, (FILE*)fp);
+    fclose(fp);
+
 
     onStart(sleft,sright, str);
     // printStack(sleft);
     // printStack(sright);
 
+    system("cls");
+    // printf("\n\n\n%s", displayOutput(sleft,sright));
+    display(displayOutput(sleft,sright));
 
-    printf("\n%s", createOutput(sleft,sright));
-
     // shiftCursorLeft(sleft , sright);
     // shiftCursorLeft(sleft , sright);
     // shiftCursorLeft(sleft , sright);
-    // printf("\n %s", createOutput(sleft,sright));
+    // printf("\n %s", displayOutput(sleft,sright));
 
     char input;
     while(1){
-        input=getch();        
+        input=getch();    
+         
+
+        
+
+        
+
+
+        
+
         system("cls");
         // printf("\n%d\n",input);
 
         printf("\n\n");
         // printf("Right arrow, left arrow, typing working");
 
-        printf("\n\n");
-        
-
-       
+        //arrow key generate firstly -32 and then ABCD??
         if(input == -32)
         {
            input=getch();        //special key generate 2 interrupts next interrupt is char M so we need to skip that otherwise it will go in next input stream
-           printf("\n%d\n",input);
+        //    printf("\n%d\n",input);
             // shiftCursorLeft(sleft , sright);
 
 
@@ -62,12 +74,19 @@ int main(){
             // 75 left
             // 72 up
             // 80 down
+            // 83 delete
+
 
             switch (input)
             {
             case 77:
                 shiftCursorLeft(sleft , sright);
                 break;
+            case 75:
+                shiftCursorRight(sleft , sright);
+                break;
+            case 83:
+                delet(sleft,sright);
             
             default:
                 break;
@@ -102,6 +121,8 @@ int main(){
 
 
 void onStart(stack* L , stack* R , char* str){
+    // char* output = (char*)malloc(strlen(str)*sizeof(char)+1);
+    // output[0]='|'
     for(int i=strlen(str)-1; i>=0; i--){
         push(R, str[i]);
     }
@@ -113,16 +134,17 @@ void onStart(stack* L , stack* R , char* str){
 
 
 
-char* createOutput(stack* L, stack* R){
+char* displayOutput(stack* L, stack* R){
     char* out= (char*)malloc(L->tos+1 + R->tos+1 + 1+ 1);
     // L + R + | (cursor) + \0
     int Lptr=0; //++ unitl Lptr <= L->tos;
     int pos=0;
+    // printf("\n %d\n", R->tos);
     while(Lptr <= L->tos){
         out[pos++]= L->arr[Lptr++];
         }
     out[pos++]='|';
-    int Rptr = R->tos;                                          //-- unitl Rptr >= 0;
+    int Rptr = R->tos; //-- unitl Rptr >= 0;
     while(Rptr >= 0){
         out[pos++]= R->arr[Rptr--];
     }
@@ -155,10 +177,25 @@ void backspace(stack* L, stack* R){
 
 void type(stack* L, stack* R , char ch){
     push(L,ch);
-    // system("cls");
 }
 
 
+char* finalOutput(stack* L, stack* R){
+    char* out= (char*)malloc(L->tos+1 + R->tos+1 +  1);       // L + R + \0
+    int Lptr=0;                                                 //++ unitl Lptr <= L->tos;
+    int pos=0;
+    while(Lptr <= L->tos){
+        out[pos++]= L->arr[Lptr++];
+        }
+    
+    int Rptr = R->tos;                                          //-- unitl Rptr >= 0;
+    while(Rptr >= 0){
+        out[pos++]= R->arr[Rptr--];
+    }
+    out[pos]='\0';
+    return out;
+
+}
 
 
 void display(char* s){
