@@ -11,20 +11,21 @@ typedef struct s
 
 
 stack* newStack(int siz);
-void push( stack* s1,int a);
-int pop( stack* s1);
+void push( stack* s1,char a);
+char pop( stack* s1);
 void printStack( stack* s);
 bool isEmpty( stack* s);
 bool isFull( stack* s);
-int top(stack* s);
+char top(stack* s);
 
 
 
 
 
-void push( stack* s1,int a){
-    if(isFull(s1)==false){s1->tos++;
-    s1->arr[s1->tos]=a;
+void push( stack* s1,char a){
+    if(isFull(s1)==false){
+        // s1->tos++;
+    s1->arr[++s1->tos]=a;
     // printf("\npushed: %d",a); 
     }
     else{
@@ -48,15 +49,15 @@ void printStack( stack* s){
 }
 
 
-int pop( stack* s1){
+char pop( stack* s1){
     if(isEmpty(s1)==false){
-    s1->tos--;
-    return s1->arr[s1->tos+1];
+    // s1->tos--;
+    return s1->arr[s1->tos--];
     }
 
     else{
 
-        return -1;
+        return 0;
     }
 }
 
@@ -82,6 +83,6 @@ bool isFull( stack* s){
 }
 
 
-int top(stack* s){
+char top(stack* s){
     return s->arr[s->tos];
 }
