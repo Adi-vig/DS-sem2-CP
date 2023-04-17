@@ -39,6 +39,8 @@ int main(){
     printf("Press Esc to escape:\n\n");
     display(displayOutput(sleft,sright));
 
+    printf("\n\n\n\n\n\n\n");
+
     char input;
     while(1){
         input=getch();    
@@ -82,6 +84,7 @@ int main(){
         }
 
         display(displayOutput(sleft,sright));
+        printf("\n\n\n\n\n\n\n");
 
 
         fp = fopen("myfile.txt", "w");
