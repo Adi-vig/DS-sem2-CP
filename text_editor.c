@@ -36,23 +36,12 @@ int main(){
     // printStack(sright);
 
     system("cls");
-    // printf("\n\n\n%s", displayOutput(sleft,sright));
     printf("Press Esc to escape:\n\n");
-
-
     display(displayOutput(sleft,sright));
-
-    // shiftCursorLeft(sleft , sright);
-    // shiftCursorLeft(sleft , sright);
-    // shiftCursorLeft(sleft , sright);
-    // printf("\n %s", displayOutput(sleft,sright));
 
     char input;
     while(1){
         input=getch();    
-         
-
-        
         if(input==27){
             fp = fopen("myfile.txt", "w");
             fprintf(fp,finalOutput(sleft,sright));       
@@ -60,31 +49,13 @@ int main(){
             break;
         }
         
-
-
-        
-
         system("cls");
-        // printf("\n%d\n",input);
         printf("Press Esc to escape:\n\n");
 
-        // printf("\n\n");
-        // printf("Right arrow, left arrow, typing working");
 
-        //arrow key generate firstly -32 and then ABCD??
         if(input == -32)
         {
-           input=getch();        //special key generate 2 interrupts next interrupt is char M so we need to skip that otherwise it will go in next input stream
-        //    printf("\n%d\n",input);
-            // shiftCursorLeft(sleft , sright);
-
-
-            // 77 right
-            // 75 left
-            // 72 up
-            // 80 down
-            // 83 delete
-
+            input=getch();        
 
             switch (input)
             {
@@ -109,7 +80,6 @@ int main(){
         else{
             type(sleft,sright,input);
         }
-        // printf("\n %s", displayOutput(sleft,sright));
 
         display(displayOutput(sleft,sright));
 
@@ -117,6 +87,7 @@ int main(){
         fp = fopen("myfile.txt", "w");
         fprintf(fp,finalOutput(sleft,sright));       
         fclose(fp);
+
 
 
         // printStack(sleft);
@@ -148,7 +119,6 @@ char* displayOutput(stack* L, stack* R){
     // L + R + | (cursor) + \0
     int Lptr=0; //++ unitl Lptr <= L->tos;
     int pos=0;
-    // printf("\n %d\n", R->tos);
     while(Lptr <= L->tos){
         out[pos++]= L->arr[Lptr++];
         }
