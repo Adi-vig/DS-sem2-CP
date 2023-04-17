@@ -14,6 +14,7 @@ void shiftCursorRight(stack* L, stack* R);
 void delet(stack* L, stack* R);
 void backspace(stack* L, stack* R);
 char* finalOutput(stack* L, stack* R);
+void display(char* s);
 
 
 
@@ -35,7 +36,8 @@ int main(){
     // printStack(sright);
 
     system("cls");
-    printf("\n\n\n%s", displayOutput(sleft,sright));
+    // printf("\n\n\n%s", displayOutput(sleft,sright));
+    display(displayOutput(sleft,sright));
 
     // shiftCursorLeft(sleft , sright);
     // shiftCursorLeft(sleft , sright);
@@ -47,16 +49,12 @@ int main(){
         input=getch();    
          
 
-        if(input== 13){
-
-        fp = fopen("myfile.txt", "w");
-        fprintf(fp,finalOutput(sleft,sright));
-        // fputs("This is testing for fputs...\n", fp);
         
-        fclose(fp);
-        break;
 
-        }
+        
+
+
+        
 
         system("cls");
         // printf("\n%d\n",input);
@@ -102,7 +100,16 @@ int main(){
         else{
             type(sleft,sright,input);
         }
-        printf("\n %s", displayOutput(sleft,sright));
+        // printf("\n %s", displayOutput(sleft,sright));
+
+        display(displayOutput(sleft,sright));
+
+
+        fp = fopen("myfile.txt", "w");
+        fprintf(fp,finalOutput(sleft,sright));       
+        fclose(fp);
+
+
         // printStack(sleft);
         // printStack(sright);
     }
@@ -188,4 +195,16 @@ char* finalOutput(stack* L, stack* R){
     out[pos]='\0';
     return out;
 
+}
+
+
+void display(char* s){
+    for(int i=0; i<strlen(s) ; i++){
+        if(s[i]==(char)13){
+            printf("\n");
+        }
+        else{
+            printf("%c",s[i]);
+        }
+    }
 }
