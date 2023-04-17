@@ -15,6 +15,9 @@ void onStart(stack* L , stack* R , char* str);
 char* createOutput(stack* L, stack* R);
 void shiftCursorLeft(stack* L, stack* R);
 void type(stack* L, stack* R , char ch);
+void shiftCursorRight(stack* L, stack* R);
+void delet(stack* L, stack* R);
+void backspace(stack* L, stack* R);
 
 
 
@@ -47,7 +50,7 @@ int main(){
     while(1){
         input=getch();        
         system("cls");
-        // printf("\n%d\n",input);
+        // printf("Right arrow, left arrow, typing working");
 
         //arrow key generate firstly -32 and then ABCD??
         if(input == -32)
@@ -61,18 +64,29 @@ int main(){
             // 75 left
             // 72 up
             // 80 down
+            // 83 delete
+
 
             switch (input)
             {
             case 77:
                 shiftCursorLeft(sleft , sright);
                 break;
+            case 75:
+                shiftCursorRight(sleft , sright);
+                break;
+            case 83:
+                delet(sleft,sright);
             
             default:
                 break;
             }
             
         }
+        else if(input=='\b'){
+            backspace(sleft,sright);
+        }
+
         else{
             type(sleft,sright,input);
         }
@@ -127,15 +141,17 @@ void shiftCursorLeft(stack* L, stack* R){
 
 
 void shiftCursorRight(stack* L, stack* R){
+    push(R,pop(L));
 
 }
 
 void delet(stack* L, stack* R){
+    pop(R);
 
 }
 
 void backspace(stack* L, stack* R){
-
+    pop(L);
 }
 
 
