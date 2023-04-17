@@ -26,7 +26,7 @@ int main(){
     stack* sleft = newStack(100); 
     stack* sright= newStack(100);
 
-    char str[] = "Hello my name is Aditya";
+    char str[] = "Hello my name is Adita";
 
     onStart(sleft,sright, str);
     printStack(sleft);
@@ -45,10 +45,8 @@ int main(){
 
 
 void onStart(stack* L , stack* R , char* str){
-
     // char* output = (char*)malloc(strlen(str)*sizeof(char)+1);
     // output[0]='|'
-
     for(int i=strlen(str)-1; i>=0; i--){
         push(R, str[i]);
     }
@@ -72,7 +70,7 @@ char* createOutput(stack* L, stack* R){
     }
     out[pos++]='|';
 
-    int Rptr = R->tos;
+    int Rptr = R->tos; //-- unitl Rptr >= 0;
     while(Rptr >= 0){
         out[pos++]= R->arr[Rptr--];
     }
