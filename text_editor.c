@@ -20,7 +20,14 @@ int main(){
     stack* sleft = newStack(100); 
     stack* sright= newStack(100);
 
-    char str[] = "Hello my name is Aditya";
+    // char str[] = "Hello my name is Aditya";
+    char str[500];
+
+    FILE* fp;
+    fp = fopen( "myfile.txt", "r" );
+    fgets(str, 500, (FILE*)fp);
+    fclose(fp);
+
 
     onStart(sleft,sright, str);
     // printStack(sleft);
@@ -37,8 +44,20 @@ int main(){
     char input;
     while(1){
         input=getch();    
+         
+
+        if(input== 13){
+
+        fp = fopen("myfile.txt", "w");
+        fprintf(fp,createOutput(sleft,sright));
+        // fputs("This is testing for fputs...\n", fp);
+        fclose(fp);
+        break;
+
+        }
 
         system("cls");
+        // printf("\n%d\n",input);
 
         printf("\n\n");
         // printf("Right arrow, left arrow, typing working");
@@ -149,5 +168,4 @@ void backspace(stack* L, stack* R){
 
 void type(stack* L, stack* R , char ch){
     push(L,ch);
-    // system("cls");
 }
