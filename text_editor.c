@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include <conio.h>
+#include<stdlib.h>
 
 #include "stack.h"
 
@@ -13,7 +14,7 @@
 void onStart(stack* L , stack* R , char* str);
 char* createOutput(stack* L, stack* R);
 void shiftCursorLeft(stack* L, stack* R);
-
+void type(stack* L, stack* R , char ch);
 
 
 
@@ -37,18 +38,48 @@ int main(){
 
     printf("\n%s", createOutput(sleft,sright));
 
-    shiftCursorLeft(sleft , sright);
-    shiftCursorLeft(sleft , sright);
-    shiftCursorLeft(sleft , sright);
-    printf("\n %s", createOutput(sleft,sright));
+    // shiftCursorLeft(sleft , sright);
+    // shiftCursorLeft(sleft , sright);
+    // shiftCursorLeft(sleft , sright);
+    // printf("\n %s", createOutput(sleft,sright));
 
     char input;
-    input=getch();
-    if(input == -32)
-    {
-        shiftCursorLeft(sleft , sright);
-    printf("\n %s", createOutput(sleft,sright));
+    while(1){
+        input=getch();        
+        system("cls");
+        // printf("\n%d\n",input);
+
+        //arrow key generate firstly -32 and then ABCD??
+        if(input == -32)
+        {
+           input=getch();        //special key generate 2 interrupts next interrupt is char M so we need to skip that otherwise it will go in next input stream
+           printf("\n%d\n",input);
+            // shiftCursorLeft(sleft , sright);
+
+
+            // 77 right
+            // 75 left
+            // 72 up
+            // 80 down
+
+            switch (input)
+            {
+            case 77:
+                shiftCursorLeft(sleft , sright);
+                break;
+            
+            default:
+                break;
+            }
+            
+        }
+        else{
+            type(sleft,sright,input);
+        }
+        printf("\n %s", createOutput(sleft,sright));
+        // printStack(sleft);
     }
+    
 
     
     return 0;
@@ -74,7 +105,7 @@ char* createOutput(stack* L, stack* R){
     // L + R + | (cursor) + \0
     int Lptr=0; //++ unitl Lptr <= L->tos;
     int pos=0;
-    printf("\n %d\n", R->tos);
+    // printf("\n %d\n", R->tos);
     while(Lptr <= L->tos){
         out[pos++]= L->arr[Lptr++];
         }
@@ -108,6 +139,7 @@ void backspace(stack* L, stack* R){
 }
 
 
-void type(stack* L, stack* R){
-
+void type(stack* L, stack* R , char ch){
+    push(L,ch);
+    // system("cls");
 }
