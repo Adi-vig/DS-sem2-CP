@@ -83,6 +83,7 @@ int main(){
         }
         printf("\n %s", createOutput(sleft,sright));
         // printStack(sleft);
+        // printStack(sright);
     }
     
 
