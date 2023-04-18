@@ -6,7 +6,7 @@ typedef struct s
 {
     int tos;
     int size;
-    int arr[100];       //doesnt matter if change it to char arr[int]
+    int arr[200];       //doesnt matter if change it to char arr[int]
 }stack;
 
 

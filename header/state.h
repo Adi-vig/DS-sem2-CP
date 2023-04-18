@@ -1,8 +1,8 @@
-#include<iostream>
+#include<stdio.h>
 #include "stack.h"
-using namespace std;
 
-typedef struct s{
+
+typedef struct {
     stack leftstack;
     stack rightstack;
 }state;
@@ -11,7 +11,42 @@ typedef struct s{
 // in text_editor.c there will be state* currentState 
 // and stateStack
 
-void pushNewState(stack* stateStack,state* newState, stack* nextLeft , stack* nextRight);
+state* createNewState(stack* nextLeft , stack* nextRight);      //just take in sleft and sright and create and return state
+
+
+
+void setState(state* stateCurrent ,stack* Left , stack* Right);         //take in a state, left & right stack as ref......... set left and right stack to the stateCurrent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // take sleft sright
 // create state and set stacks 
 // push state into state stack
@@ -20,7 +55,7 @@ void pushNewState(stack* stateStack,state* newState, stack* nextLeft , stack* ne
 
 
 
-state* popState(stack* stateStack);
+// state* popState(stack* stateStack);
 // pop and return top (last) state
 
 
@@ -35,7 +70,7 @@ state* popState(stack* stateStack);
 
 
 
-stack* leftState(state*)
+// stack* leftState(state*)
 
 
 

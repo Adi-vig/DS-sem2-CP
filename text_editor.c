@@ -3,7 +3,7 @@
 #include <conio.h>
 #include<stdlib.h>
 
-#include "header/stack.h"
+#include "header/stateStack.h"
 
 
 void onStart(stack* L , stack* R , char* str);
@@ -19,8 +19,8 @@ void display(char* s);
 
 
 int main(){
-    stack* sleft = newStack(100);
-    stack* sright= newStack(100);
+    stack* sleft = newStack(200);
+    stack* sright= newStack(200);
 
     // char str[] = "Hello my name is Aditya";
     char str[500];
