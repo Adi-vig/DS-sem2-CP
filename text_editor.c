@@ -19,7 +19,7 @@ void display(char* s);
 
 
 int main(){
-    stack* sleft = newStack(100); 
+    stack* sleft = newStack(100);
     stack* sright= newStack(100);
 
     // char str[] = "Hello my name is Aditya";
@@ -43,21 +43,21 @@ int main(){
 
     char input;
     while(1){
-        input=getch();    
+        input=getch();
         if(input==27){
             fp = fopen("myfile.txt", "w");
-            fprintf(fp,finalOutput(sleft,sright));       
+            fprintf(fp,finalOutput(sleft,sright));
             fclose(fp);
             break;
         }
-        
+
         system("cls");
         printf("Press Esc to escape:\n\n");
 
 
         if(input == -32)
         {
-            input=getch();        
+            input=getch();
 
             switch (input)
             {
@@ -69,11 +69,11 @@ int main(){
                 break;
             case 83:
                 delet(sleft,sright);
-            
+
             default:
                 break;
             }
-            
+
         }
         else if(input=='\b'){
             backspace(sleft,sright);
@@ -88,17 +88,17 @@ int main(){
 
 
         fp = fopen("myfile.txt", "w");
-        fprintf(fp,finalOutput(sleft,sright));       
+        fprintf(fp,finalOutput(sleft,sright));
         fclose(fp);
 
 
 
-        // printStack(sleft);
-        // printStack(sright);
+        printStack(sleft);
+        printStack(sright);
     }
-    
 
-    
+
+
     return 0;
 }
 
@@ -110,7 +110,7 @@ void onStart(stack* L , stack* R , char* str){
         push(R, str[i]);
     }
 
-    
+
 
 };
 
@@ -169,7 +169,7 @@ char* finalOutput(stack* L, stack* R){
     while(Lptr <= L->tos){
         out[pos++]= L->arr[Lptr++];
         }
-    
+
     int Rptr = R->tos;                                          //-- unitl Rptr >= 0;
     while(Rptr >= 0){
         out[pos++]= R->arr[Rptr--];
