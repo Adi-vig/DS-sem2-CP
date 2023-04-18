@@ -3,7 +3,7 @@
 #include <conio.h>
 #include<stdlib.h>
 
-#include "stack.h"
+#include "header/stack.h"
 
 
 void onStart(stack* L , stack* R , char* str);
