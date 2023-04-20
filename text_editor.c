@@ -7,13 +7,13 @@
 
 
 void onStart(stack* L , stack* R , char* str);
-char* displayOutput(stack* L, stack* R);
+char* outW_cursor_No_newline(stack* L, stack* R);
 void shiftCursorLeft(stack* L, stack* R);
 void type(stack* L, stack* R , char ch);
 void shiftCursorRight(stack* L, stack* R);
 void delet(stack* L, stack* R);
 void backspace(stack* L, stack* R);
-char* finalOutput(stack* L, stack* R);
+char* outputToBeSaved(stack* L, stack* R);
 void display(char* s);
 
 
@@ -37,7 +37,7 @@ int main(){
 
     system("cls");
     printf("Press Esc to escape:\n\n");
-    display(displayOutput(sleft,sright));
+    display(outW_cursor_No_newline(sleft,sright));
 
     printf("\n\n\n\n\n\n\n");
 
@@ -46,7 +46,7 @@ int main(){
         input=getch();
         if(input==27){
             fp = fopen("myfile.txt", "w");
-            fprintf(fp,finalOutput(sleft,sright));
+            fprintf(fp,outputToBeSaved(sleft,sright));
             fclose(fp);
             break;
         }
@@ -83,12 +83,12 @@ int main(){
             type(sleft,sright,input);
         }
 
-        display(displayOutput(sleft,sright));
+        display(outW_cursor_No_newline(sleft,sright));
         printf("\n\n\n\n\n\n\n");
 
 
         fp = fopen("myfile.txt", "w");
-        fprintf(fp,finalOutput(sleft,sright));
+        fprintf(fp,outputToBeSaved(sleft,sright));
         fclose(fp);
 
 
@@ -117,7 +117,7 @@ void onStart(stack* L , stack* R , char* str){
 
 
 
-char* displayOutput(stack* L, stack* R){
+char* outW_cursor_No_newline(stack* L, stack* R){
     char* out= (char*)malloc(L->tos+1 + R->tos+1 + 1+ 1);
     // L + R + | (cursor) + \0
     int Lptr=0; //++ unitl Lptr <= L->tos;
@@ -162,7 +162,7 @@ void type(stack* L, stack* R , char ch){
 }
 
 
-char* finalOutput(stack* L, stack* R){
+char* outputToBeSaved(stack* L, stack* R){
     char* out= (char*)malloc(L->tos+1 + R->tos+1 +  1);       // L + R + \0
     int Lptr=0;                                                 //++ unitl Lptr <= L->tos;
     int pos=0;
@@ -190,3 +190,13 @@ void display(char* s){
         }
     }
 }
+
+
+
+
+
+
+
+
+// TODO: cursor disappearing bug
+// TODO: 

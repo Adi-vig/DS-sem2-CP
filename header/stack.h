@@ -6,7 +6,7 @@ typedef struct s
 {
     int tos;
     int size;
-    int arr[200];       //doesnt matter if change it to char arr[int]
+    char arr[200];       //doesnt matter if change it to char arr[int]
 }stack;
 
 
@@ -63,7 +63,7 @@ char pop( stack* s1){
 
 
 
- stack* newStack(int siz){
+stack* newStack(int siz){
     stack* ptr= ( stack*)malloc(sizeof( stack));
     ptr->tos=-1;
     ptr->size= siz;

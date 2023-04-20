@@ -25,6 +25,10 @@ void setState(state* stateCurrent ,stack* Left , stack* Right);         //take i
 
 
 
+state* createNewState(stack* nextLeft , stack* nextRight){
+    
+}      
+
 
 
 
@@ -99,3 +103,14 @@ void setState(state* stateCurrent ,stack* Left , stack* Right);         //take i
 
 
 //  up and down cursor navigation 
+
+
+
+// blinking cursor
+// char selectCursor[]={'|', ' ' };
+
+// char cursorChar='|'
+
+// if(currentTime==3000 ms) reset time to 0;
+// if(currentTime == 1000 ms) cursurChar = selectCursor[0];
+// if(currentTime == 2000 ms) cursurChar = selectCursor[1];
