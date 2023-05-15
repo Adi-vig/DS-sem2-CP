@@ -19,8 +19,8 @@ void display(char* s);
 
 
 int main(){
-    stack* sleft = newStack(200);
-    stack* sright= newStack(200);
+    stack* sleft = newStack(250);
+    stack* sright= newStack(250);
 
     // char str[] = "Hello my name is Aditya";
     char str[500];
