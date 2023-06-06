@@ -8,9 +8,12 @@
 
 void onStart(stack* L , stack* R , char* str);
 char* outW_cursor_No_newline(stack* L, stack* R);
-void shiftCursorLeft(stack* L, stack* R);
+void shiftCurRight(stack* L, stack* R);
 void type(stack* L, stack* R , char ch);
-void shiftCursorRight(stack* L, stack* R);
+void shiftCurLeft(stack* L, stack* R);
+void moveArrowUp(stack* L, stack* R);
+void moveArrowDown(stack* L, stack* R);
+
 void delet(stack* L, stack* R);
 void backspace(stack* L, stack* R);
 char* outputToBeSaved(stack* L, stack* R);
@@ -62,13 +65,22 @@ int main(){
             switch (input)
             {
             case 77:
-                shiftCursorLeft(sleft , sright);
+                shiftCurRight(sleft , sright);
                 break;
             case 75:
-                shiftCursorRight(sleft , sright);
+                shiftCurLeft(sleft , sright);
                 break;
             case 83:
                 delet(sleft,sright);
+                break;
+            case 80:
+                // down
+                moveArrowDown(sleft, sright);
+                break;
+            case 72:
+                // up
+                moveArrowUp(sleft,sright);
+                break;
 
             default:
                 break;
@@ -80,6 +92,7 @@ int main(){
         }
 
         else{
+            printf("%d\n", input);
             type(sleft,sright,input);
         }
 
@@ -137,12 +150,14 @@ char* outW_cursor_No_newline(stack* L, stack* R){
 
 
 
-void shiftCursorLeft(stack* L, stack* R){
+void shiftCurRight(stack* L, stack* R){
+    if(!isEmpty(R))
     push(L, pop(R));
 }
 
 
-void shiftCursorRight(stack* L, stack* R){
+void shiftCurLeft(stack* L, stack* R){
+    if(!isEmpty(L))
     push(R,pop(L));
 
 }
@@ -196,7 +211,34 @@ void display(char* s){
 
 
 
+void moveArrowUp(stack* L, stack* R){
+    // int i=0;
+    while(top(L)!= (char)13 && !isEmpty(L)){
+        push(R, pop(L));
+        // printf("%d",i++);
+    }
+    if(!isEmpty(L))push(R,pop(L));
+
+}
+
+
+
+void moveArrowDown(stack* L, stack* R){
+    // int i=0;
+    while(top(R)!= (char)13 && !isEmpty(R)){
+        push(L, pop(R));
+        // printf("%d",i++);
+    }
+    if(!isEmpty(R))push(L,pop(R));
+
+}
+
+
+
+
+
 
 
 // TODO: cursor disappearing bug
-// TODO: 
+// TODO: up down arrow
+// TODO: file handling 
